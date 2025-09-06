@@ -14,16 +14,6 @@ public class ProductBasket {
     }
 
     // Возвращает общую сумму всех товаров в корзине
-    public int totalCost() {
-        int sum = 0;
-        for (List<Product> productList : products.values()) {
-            for (Product product : productList) {
-                int string = Integer.parseInt(product.toString());
-                sum += string;
-            }
-        }
-        return sum;
-    }
 
     // Подсчет специальных товаров
     private long countSpecialProducts() {

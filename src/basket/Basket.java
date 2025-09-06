@@ -1,6 +1,5 @@
 package basket;
 
-
 import product.Product;
 
 import java.util.HashMap;
@@ -15,6 +14,7 @@ public class Basket {
         categories.put(category, products);
     }
 
+    // Расчёт общей стоимости через стримы
     public double calculateTotalCost() {
         return categories.values().stream()
                 .flatMap(List::stream)
@@ -22,6 +22,7 @@ public class Basket {
                 .sum();
     }
 
+    // Подсчет количества специальных товаров
     public long countSpecialProducts() {
         return categories.values().stream()
                 .flatMap(List::stream)
@@ -29,6 +30,7 @@ public class Basket {
                 .count();
     }
 
+    // Вывод содержимого корзины
     public void printBasket() {
         categories.forEach((category, products) ->
                 System.out.println(category + ": " + products));

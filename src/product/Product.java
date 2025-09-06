@@ -1,9 +1,9 @@
 package product;
 
-public class Product implements Searchable {
-    private String name;
-    private double price;
-    private boolean special;
+public class Product {
+    private final String name;
+    private final double price;
+    private final boolean special;
 
     public Product(String name, double price, boolean special) {
         this.name = name;
@@ -21,11 +21,6 @@ public class Product implements Searchable {
 
     public boolean isSpecial() {
         return special;
-    }
-
-    @Override
-    public boolean matches(String query) {
-        return name.contains(query);
     }
 
     @Override
