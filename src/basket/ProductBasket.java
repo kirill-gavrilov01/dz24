@@ -1,4 +1,5 @@
 package basket;
+
 import product.Product;
 
 import java.util.Collection;
@@ -13,19 +14,15 @@ public class ProductBasket {
         this.products = products;
     }
 
-    // Возвращает общую сумму всех товаров в корзине
-
-    // Подсчет специальных товаров
+    // Метод для подсчета специальной продукции
     private long countSpecialProducts() {
-        long count;
-        count = products.values().stream()
+        return products.values().stream()
                 .flatMap(Collection::stream)
                 .filter(Product::isSpecial)
                 .count();
-        return count;
     }
 
-    // Вывод корзины и подсчёт специальных товаров
+    // Вывод корзины и подсчет спецтоваров
     public void printBasket() {
         System.out.println("Список товаров:");
         products.forEach((category, productList) -> {
@@ -35,5 +32,13 @@ public class ProductBasket {
 
         long specialCount = countSpecialProducts();
         System.out.println("Количество специальных товаров: " + specialCount);
+    }
+
+    // Новый метод для расчёта общей суммы товаров в корзине
+    public double totalCost() {
+        return products.values().stream()
+                .flatMap(Collection::stream)
+                .mapToDouble(Product::getPrice)
+                .sum();
     }
 }
